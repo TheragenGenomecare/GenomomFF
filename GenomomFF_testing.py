@@ -13,8 +13,8 @@ import shutil  # To copy parameter File from test to testing Folder
 #from shutil import copyfile
 # Declaring Global Variables
 print("Welcome To FF Analysis 1.0 Version.......TESTING....")
-print("Concept Developed By Sunshin Kim (sunshinkim3@gmail.com) ")
-print("Code edited by Adh Krish krishdb38@gmail.com \n")
+print("Prototype Developed By Sunshin Kim (sunshinkim3@gmail.com) ")
+print("Code updated by Adh Krish krishdb38@gmail.com \n")
 
 read_bin_info = None  # User Input Read Bin File
 ffy_read = None       # FFyread + ... Out put By Loesstrain() Function
@@ -44,7 +44,7 @@ def read_bin():
     global ffy_read, t_read
     global ffy_rl, t_rl
     global temptrain_rl_rf, temptrain_rl_y
-    global temptrain_read_rf, temptrain_read_y
+    global temptrain_rc_rf, temptrain_rc_y
     #Parameter Value
     #global temp_train_par_read , temp_train_par_rl
     global enet_read, enet_rl
@@ -86,11 +86,11 @@ def read_bin():
 
 
 def get_parameter_file():  # Files must be copoied by Automatic....py
-    global temp_train_par_read, temp_train_par_rl
+    global temp_train_par_rc, temp_train_par_rl
     files = os.listdir("./training/")
 
-    if temp_train_par_read in files and temp_train_par_rl in files:
-        shutil.copy("./training/"+temp_train_par_read, "./testing/")
+    if temp_train_par_rc in files and temp_train_par_rl in files:
+        shutil.copy("./training/"+temp_train_par_rc, "./testing/")
         shutil.copy("./training/"+temp_train_par_rl, "./testing/")
         print("Files Copied SUCCESSFULLY")
     else:
@@ -135,8 +135,8 @@ def cal_enet_read():
     #Accept 3 Parameter as input and Give One Output enet.read
     #Cal_enet  first param temptrain_par_read_.. , temp_test_read_y_.. ,temp_test_read_rf(x).. and Output_file to save
 
-    cmd = ['Rscript', 'cal_enetread.R', temp_train_par_read,
-           temptrain_read_y, temptrain_read_rf, enet_read]
+    cmd = ['Rscript', 'cal_enetrc.R', temp_train_par_rc,
+           temptrain_rc_y, temptrain_rc_rf, enet_rc]
     out = subprocess.run(cmd, shell=True, capture_output=True, text=True)
     print(out.stderr) if out.stderr else print(out.stdout)
     
@@ -180,7 +180,7 @@ def cal_enet_rl():
 def Cal_Cor():
     global enet_read, enet_rl
     df1 = pd.read_csv(enet_rl, usecols=["final_enet"])
-    df2 = pd.read_csv(enet_read, usecols=["final_enet", "V1"])
+    df2 = pd.read_csv(enet_rc, usecols=["final_enet", "V1"])
     df1 = pd.concat([df1, df2], axis=1)
     #Renaming The Column Name to Avoid Conflict
     df1.columns = ['final_enet', 'final_enet_1', 'Standard FF']

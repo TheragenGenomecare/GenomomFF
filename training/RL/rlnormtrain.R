@@ -25,19 +25,18 @@ for(i in seq_along(infolist)) {
 
 
   bin = bininfo$CHR!="chrX" & bininfo$CHR!="chrY" & bininfo$CHR!="chr13" & bininfo$CHR!="chr18" & bininfo$CHR!="chr21"
-  alluseablebins = bininfo$binName
+  allbins = bininfo$binName
 
-  autoscaledtemp  <- bininfo$RRL[bin]/sum(bininfo$RRL[bin], na.rm=T)
-  allscaledtemp  <- bininfo$RRL[alluseablebins]/sum(bininfo$RRL[bin], na.rm=T)
+  allscale  <- bininfo$RRL[allbins]/sum(bininfo$RRL[bin], na.rm=T)
 
   remove = bininfo$CHR=="chrX" | bininfo$CHR=="chrY" | bininfo$CHR=="chr13" | bininfo$CHR=="chr18" | bininfo$CHR=="chr21"
   names(remove) = bininfo$binName
 
-  normalizedbincount <- allscaledtemp 
+  normalizedbincount <- allscale 
 
   bincounts=rep(1,N-1)
   names(bincounts) = bininfo$binName
-  bincounts[alluseablebins] <- (normalizedbincount/sum(normalizedbincount, na.rm=T)) * length(normalizedbincount)
+  bincounts[allbins] <- (normalizedbincount/sum(normalizedbincount, na.rm=T)) * length(normalizedbincount)
   bincounts[is.na(bincounts)] <- 0
   df <- data.frame(bininfo$CHR, bincounts)
   bincounts[remove] <- 0

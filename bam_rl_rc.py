@@ -34,7 +34,6 @@ def sam_2_rgc():
         for x in range(22):
             for y in range(int(mx[x])+1):
                 key = 'chr'+str(x+1)+"_"+str(y)
-            #if not sp.has_key(key): #this is python 2
                 if key not in sp:
                     sp[key] = []  #Blank Container
                 sp[key].append(key)

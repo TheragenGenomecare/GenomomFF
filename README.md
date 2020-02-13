@@ -1,18 +1,18 @@
 # Background
 
-The accurate measure of a fetal fraction is important to assure the results of noninvasive prenatal testing. However, a huge amount of data, as well as additional costs, could occur by measuring fetal fraction. This study proposes an alternative method of measuring fetal fraction when it is a relatively limited sample size. The adaptive machine learning algorithms customised to each laboratory’s environment were used to measure fetal fraction. The pregnant women with female fetuses were tested to exclude the bias caused by training data of the women carrying male fetuses. The accuracy of fetal DNA fraction prediction was enhanced by increasing training sample size. When trained with 1,000 samples (males) and tested with 45 samples (females), the optimal bin sizes using the read count and read size features were 300 kb and 800 kb, respectively. When comparing the new 300 kb bin to the 50 kb bin used by SeqFF at 4,000–5,000 training samples, the correlation is approximately 3-5% higher in the 300 kb bin. We proposed an effective and customized method of measuring fetal fraction available to individual laboratories with limited sample collecting conditions. <br>
+The accurate measure of a fetal fraction is important to assure the results of noninvasive prenatal testing. However, a huge amount of data, as well as additional costs, could occur by measuring fetal fraction. This study proposes an alternative method of measuring fetal fraction when it is a relatively limited sample size. The adaptive machine learning algorithms customised to each laboratory?�s environment were used to measure fetal fraction. The pregnant women with female fetuses were tested to exclude the bias caused by training data of the women carrying male fetuses. The accuracy of fetal DNA fraction prediction was enhanced by increasing training sample size. When trained with 1,000 samples (males) and tested with 45 samples (females), the optimal bin sizes using the read count and read size features were 300 kb and 800 kb, respectively. When comparing the new 300 kb bin to the 50 kb bin used by SeqFF at 4,000??,000 training samples, the correlation is approximately 3-5% higher in the 300 kb bin. We proposed an effective and customized method of measuring fetal fraction available to individual laboratories with limited sample collecting conditions. <br>
 `for more search our paper`
 
 # ```Precautions and Requirement ```
-## `Python >3` with Pandas & Numpy library installed  and `R` with glmnet installed
+## `Python 3` with Pandas & Numpy library installed  and `R` with glmnet installed
 Python is great language and numpy and pandas are very fast and widely used in data processing specially matrix operation
 Similarly R is easy and powerful languages for statistical operation.
 We did general operation with `Python` and `Statistical` operation `E-net regression` with `R --> glmnet`
 
 
-#### `There must be bin info file inside Read and RL file ` as like read_bin*... .csv and rl_bininfo*...csv both in CSV without header 
-GC1601C0356_20160125-150072_IonXpress_010.Fastq.sam.bam.sort.bam.rmdup.bam.sam.srl,19.05270566
-GC1601C0378_20160126-300332_IonXpress_020.Fastq.sam.bam.sort.bam.rmdup.bam.sam.srl,17.65618359
+#### `There must be bin info file inside RC and RL file ` as like rc_bin*... .csv and rl_bininfo*...csv both in CSV without header 
+Sample1.Fastq.sam.bam.sort.bam.rmdup.bam.sam.rl,19.05270566
+Sample2.Fastq.sam.bam.sort.bam.rmdup.bam.sam.rl,17.65618359
 
 ## GC CSV and Read Length SRL file must be CSV format and CSV header as like <br>
 

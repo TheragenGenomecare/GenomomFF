@@ -29,9 +29,9 @@ temp_train_par_rl = "temptrain_par_rl.csv"
 def read_bin():
     global rl_bin_info, read_bin_info, ffy_read, t_read, ffy_rl, t_rl
     global temptrain_rl_rf, temptrain_rl_y
-    global temptrain_read_rf, temptrain_read_y
+    global temptrain_rc_rf, temptrain_rc_y
 
-    files = os.listdir("./training/Read/")
+    files = os.listdir("./training/RC/")
     for file in files:
         if file[:8] == "read_bin":
             read_bin_info = file
@@ -71,15 +71,15 @@ def Rl_normtrain():
         bininfo = pd.read_csv(rl_file)
         bininfo = bininfo.iloc[:, [1, 3]]
         print(rl_file[:11], end="\t")
-        autosomebinsonly = (bininfo.CHR != "chrX") & (bininfo.CHR != "chrY") & (
+        autosomebins = (bininfo.CHR != "chrX") & (bininfo.CHR != "chrY") & (
             bininfo.CHR != "chr13") & (bininfo.CHR != "chr18") & (bininfo.CHR != "chr21")
 
-        sum_rrl_autosomebinsl = bininfo.RRL[autosomebinsonly].sum()
+        sum_rrl_autosomebinsl = bininfo.RRL[autosomebins].sum()
         #remove = (bininfo.CHR=="chrX")|(bininfo.CHR=="chrY")|(bininfo.CHR=="chr13")|(bininfo.CHR=="chr18")|(bininfo.CHR=="chr21")
         # instead remove we used autosome bin only both are same
-        bininfo["allscaledtemp"] = bininfo.RRL/sum_rrl_autosomebinsl
-        bininfo["bincounts"] = bininfo.allscaledtemp[autosomebinsonly] / \
-            (bininfo.allscaledtemp.sum())*len(bininfo["allscaledtemp"])
+        bininfo["allscale"] = bininfo.RRL/sum_rrl_autosomebinsl
+        bininfo["bincounts"] = bininfo.allscale[autosomebinsonly] / \
+            (bininfo.allscale.sum())*len(bininfo["allscale"])
         # Since We apply to autosome bins Only so NA value must be replaced with 0
         bininfo = bininfo.fillna(0)  # Fill NA = 0
         bin_counts = pd.DataFrame(bininfo.bincounts).T  # T is Transpose Numpy

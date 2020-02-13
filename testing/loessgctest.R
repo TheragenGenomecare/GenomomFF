@@ -20,20 +20,20 @@ for(i in seq_along(rgc_list)) {
 
   ############ create bincounts infomation 
   auto = bin$CHR!="chrX" & bin$CHR!="chrY" & bin$CHR!="chr13" & bin$CHR!="chr18" & bin$CHR!="chr21"
-  all_bins = bin$BIN   #alluseablebins changed to useable_bin
+  all_bins = bin$BIN 
 
-  autoscaledtemp  <- bin$COUNT[auto]/sum(bin$COUNT[auto], na.rm=T)
-  allscaledtemp  <- bin$COUNT[all_bins]/sum(bin$COUNT[auto], na.rm=T)
+  autoscale  <- bin$COUNT[auto]/sum(bin$COUNT[auto], na.rm=T)
+  allscale  <- bin$COUNT[all_bins]/sum(bin$COUNT[auto], na.rm=T)
 
   remove = bin$CHR=="chrX" | bin$CHR=="chrY" | bin$CHR=="chr13" | bin$CHR=="chr18" | bin$CHR=="chr21"
   names(remove) = bin$BIN
 
   # additive loess correction
   meancountpergc <- tapply(
-    autoscaledtemp,round(bin$GC[auto], digits=3), function(x) mean(x, na.rm=T))
+    autoscale,round(bin$GC[auto], digits=3), function(x) mean(x, na.rm=T))
   ## prediction 
   loess.fitted  <- predict( loess(meancountpergc ~ as.numeric(names(meancountpergc))), round(bin$GC[all_bins], digits=3)) 
-  normalizedbincount <- allscaledtemp  + ( mean(autoscaledtemp, na.rm=T) - loess.fitted )  
+  normalizedbincount <- allscale  + ( mean(autoscale, na.rm=T) - loess.fitted )  
 
   binCOUNT=rep(1,N-1)
   names(binCOUNT) = bin$BIN
