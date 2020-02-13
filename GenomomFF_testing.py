@@ -16,19 +16,19 @@ print("Welcome To FF Analysis 1.0 Version.......TESTING....")
 print("Prototype Developed By Sunshin Kim (sunshinkim3@gmail.com) ")
 print("Code updated by Adh Krish krishdb38@gmail.com \n")
 
-read_bin_info = None  # User Input Read Bin File
-ffy_read = None       # FFyread + ... Out put By Loesstrain() Function
-t_read = None  # t_read +.... is  also Output By Loesstrain() Function
-temptrain_read_y = None  # output By Enet() Function Arrangetrain()
-temptrain_read_rf = None  # Output By Enet() Function
-temp_train_par_read = "temptrain_par_read.csv"  # 1000 Data Set
-#temp_train_par_read =None#Output By GLmnet for Training Purpose
-enet_read = None  # Output By testing cal_enetread
+rc_bin_info = None  # User Input rc Bin File
+ffy_rc = None       # FFyrc + ... Out put By Loesstrain() Function
+t_rc = None  # t_rc +.... is  also Output By Loesstrain() Function
+temptrain_rc_y = None  # output By Enet() Function Arrangetrain()
+temptrain_rc_rf = None  # Output By Enet() Function
+temp_train_par_rc = "temptrain_par_rc.csv"  # 1000 Data Set
+#temp_train_par_rc =None#Output By GLmnet for Training Purpose
+enet_rc = None  # Output By testing cal_enetrc
 
 # Global Variable for RL
 rl_bin_info = None  # User Input RL Bin File
-ffy_rl = None       # FFyread + ... Out put By Loesstrain() Functio  = None       #tread +.... is  also Output By Loesstrain() Function
-t_rl = None  # tread +.... is  also Output By Loesstrain() Function
+ffy_rl = None       # FFyrc + ... Out put By Loesstrain() Functio  = None       #trc +.... is  also Output By Loesstrain() Function
+t_rl = None  # trc +.... is  also Output By Loesstrain() Function
 temptrain_rl = None  # Output by Arrangetrain()
 temptrain_rl_y = None  # output By Enet() Function
 temptrain_rl_rf = None  # Output By Enet() Function
@@ -39,49 +39,49 @@ temp_train_par_rl = "temptrain_par_rl.csv"
 
 
 def read_bin():
-    global rl_bin_info, read_bin_info   # info File
+    global rl_bin_info, rc_bin_info   # info File
 
-    global ffy_read, t_read
+    global ffy_rc, t_rc
     global ffy_rl, t_rl
     global temptrain_rl_rf, temptrain_rl_y
     global temptrain_rc_rf, temptrain_rc_y
     #Parameter Value
-    #global temp_train_par_read , temp_train_par_rl
-    global enet_read, enet_rl
+    #global temp_train_par_rc , temp_train_par_rl
+    global enet_rc, enet_rl
     
     files = os.listdir("./testing/")
     #print(files)
     for file in files:
-        if file[:8] == "read_bin":
-            read_bin_info = file
-            ffy_read = "ffy_read_"+file[13:]
-            t_read = "t_read_" + file[13:]
-            temptrain_read_rf = "temptrain_read_rf"+file[13:]
-            temptrain_read_y = "temptrain_read_y"+file[13:]
-            #temp_train_par_read = "temptrain_par_read"+file[13:]
-            enet_read = "enet_read_" + file[13:]
-    if read_bin_info == None:
-        print("Read Bininfo file Not found")
+        if file[:6] == "rc_bin":
+            rc_bin_info = file
+            ffy_rc = "ffy_rc_"+file[6:]
+            t_rc = "t_rc_" + file[6:]
+            temptrain_rc_rf = "temptrain_rc_rf"+file[6:]
+            temptrain_rc_y = "temptrain_rc_y"+file[6:]
+            #temp_train_par_rc = "temptrain_par_rc"+file[6:]
+            enet_rc = "enet_rc_" + file[6:]
+    if rc_bin_info == None:
+        print("rc Bininfo file Not found")
         sys.exit(1)
     #for RL
     files = os.listdir("./testing/")
     for file in files:
         if file[:6] == "rl_bin":
             rl_bin_info = file
-            ffy_rl = "ffy_rl_"+file[11:]
-            t_rl = "t_rl_" + file[11:]
+            ffy_rl = "ffy_rl_"+file[6:]
+            t_rl = "t_rl_" + file[6:]
 
-            temptrain_rl_rf = "temptrain_rl_rf_"+file[1:]
-            temptrain_rl_y = "temptrain_rl_y_"+file[11:]
+            temptrain_rl_rf = "temptrain_rl_rf_"+file[6:]
+            temptrain_rl_y = "temptrain_rl_y_"+file[6:]
             #temp_train_par_rl = "temptrain_par_rl"+file[11:]
-            enet_rl = "enet_rl_"+file[11:]
+            enet_rl = "enet_rl_"+file[6:]
 
     if rl_bin_info == None:
         print("RL Bininfo file Not found")
         sys.exit(1)
     files = os.listdir("./")
-    print("we found following Read and RL bininfo files")
-    print("Read info file is \t", read_bin_info)
+    print("we found following rc and RL bininfo files")
+    print("rc info file is \t", rc_bin_info)
     print("RL info file is \t", rl_bin_info)
 
 
@@ -97,43 +97,43 @@ def get_parameter_file():  # Files must be copoied by Automatic....py
         print("Please Copy temptrain parameter Files Manually")
         print("In the Absence of Parameter Files Cant predict Output")
 
-##################### Read Function ###################
+##################### rc Function ###################
 
 
-def Loesstest_read():  # Rscript Code Will Run with Python
-    global read_bin_info, ffy_read, t_read
+def Loesstest_rc():  # Rscript Code Will Run with Python
+    global rc_bin_info, ffy_rc, t_rc
     os.chdir("./testing/")  # changed the working Directory
-    cmd = ['Rscript', 'loessgctest.R', read_bin_info, ffy_read, t_read]
-    #Parameter Must be passed bininfo file, Y and X[ffyread and t read is Output file made by loessgctrain.R]
+    cmd = ['Rscript', 'loessgctest.R', rc_bin_info, ffy_rc, t_rc]
+    #Parameter Must be passed bininfo file, Y and X[ffyrc and t rc is Output file made by loessgctrain.R]
     out = subprocess.run(cmd, shell=True, capture_output=True, text=True)
-    print(out.stderr) if out.stdout else print(
-        out.stdout, "cal_enet of read. Ran SuccessFully")
-    print("loess gct test Read Run Success")
+
+    print(out.stdout) if out.stderr else print(
+        out.stdout, "cal_enet of rc. Ran SuccessFully")
 
 
-def Arrangetest_read():
-    global ffy_read, t_read, temptrain_read_y, temptrain_read_rf
-    df_y = pd.read_csv(ffy_read, usecols=[1])
+def Arrangetest_rc():
+    global ffy_rc, t_rc, temptrain_rc_y, temptrain_rc_rf
+    df_y = pd.read_csv(ffy_rc, usecols=[1])
     df_y = df_y.rename(columns=df_y.iloc[0])  # Rename First Row as Header
     # Since Header is replaced with FIrst Row so remove FIrst Row
     df_y = df_y.iloc[1:, :]
     # ,index = None , header = False)
-    df_y.to_csv(temptrain_read_y, index=False)
+    df_y.to_csv(temptrain_rc_y, index=False)
     #Variable Y
-    df_x = pd.read_csv(t_read)
+    df_x = pd.read_csv(t_rc)
     df_x = df_x.iloc[:, 1:]
     df_x = df_x.rename(columns=df_x.iloc[0])
     df_x = df_x.iloc[1:, :]
-    df_x.to_csv(temptrain_read_rf, index=None)
-    print("Temp test read y and rf(x) Created Successfully")
+    df_x.to_csv(temptrain_rc_rf, index=None)
+    print("Temp test rc y and rf(x) Created Successfully")
 
 
-def cal_enet_read():
-    print("Calculating calenet_Read")
-    global temp_train_par_read, temptrain_read_y, temptrain_read_rf, enet_read
-    #print(type(temp_train_par_read) , type(temptrain_read_y) , type(temptrain_read_rf) ,type(enet_read))
-    #Accept 3 Parameter as input and Give One Output enet.read
-    #Cal_enet  first param temptrain_par_read_.. , temp_test_read_y_.. ,temp_test_read_rf(x).. and Output_file to save
+def cal_enet_rc():
+    print("Calculating calenet_rc")
+    global temp_train_par_rc, temptrain_rc_y, temptrain_rc_rf, enet_rc
+    #print(type(temp_train_par_rc) , type(temptrain_rc_y) , type(temptrain_rc_rf) ,type(enet_rc))
+    #Accept 3 Parameter as input and Give One Output enet.rc
+    #Cal_enet  first param temptrain_par_rc_.. , temp_test_rc_y_.. ,temp_test_rc_rf(x).. and Output_file to save
 
     cmd = ['Rscript', 'cal_enetrc.R', temp_train_par_rc,
            temptrain_rc_y, temptrain_rc_rf, enet_rc]
@@ -178,7 +178,7 @@ def cal_enet_rl():
 
 
 def Cal_Cor():
-    global enet_read, enet_rl
+    global enet_rc, enet_rl
     df1 = pd.read_csv(enet_rl, usecols=["final_enet"])
     df2 = pd.read_csv(enet_rc, usecols=["final_enet", "V1"])
     df1 = pd.concat([df1, df2], axis=1)
@@ -201,10 +201,10 @@ def Cal_Cor():
 if __name__ == "__main__":
     read_bin()
     get_parameter_file() #On
-    Loesstest_read() #Run RL Norm test
-    #os.chdir("./testing/")  # Need to comment if Loesstest_read
-    Arrangetest_read()
-    cal_enet_read()
+    Loesstest_rc() #Run RL Norm test
+    #os.chdir("./testing/")  # Need to comment if Loesstest_rc
+    Arrangetest_rc()
+    cal_enet_rc()
     rlnormtest()
     Arrangetest_rl()
     cal_enet_rl()

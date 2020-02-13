@@ -1,16 +1,16 @@
 #!/usr/bin/R
 args = commandArgs(trailingOnly=TRUE)
 
-#args <- read.table(args[1], header=FALSE)
 
 #N = args$V1
 library(Matrix)
-srl_file = args[1]
-ffysr_ = args[2]
-tsrl_ = args[3]
-#srl_file = "srlbininfo" Automatically Passed by Progtram
+rl_file = args[1]
+ffyrl_ = args[2]
+trl_ = args[3]
+
+#rl_file = "rlbininfo" Automatically Passed by Progtram
 N = 3881
-infolist = read.table(srl_file,sep=",")
+infolist = read.table(rl_file,sep=",")
 
 #y = infolist$v2
 
@@ -53,5 +53,5 @@ for(i in seq_along(infolist)) {
 y <- y*0.01
 ymat <- as.matrix(y)
 tmat <- as.matrix(all_mat)
-write.csv(ymat, file = ffysr_) #Except Row name
-write.csv(tmat, file = tsrl_) #Except First Col row name
+write.csv(ymat, file = ffyrl_) #Except Row name
+write.csv(tmat, file = trl_) #Except First Col row name

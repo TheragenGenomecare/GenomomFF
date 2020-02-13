@@ -53,7 +53,7 @@ for(i in seq_along(rgc_list)) {
   }
   ID = strsplit(as.character(rgc_list[i]), "_")
   
-  cat("\t",ID[[1]][1])
+  #cat("\t",ID[[1]][1])
 }
 y <- y*0.01
 ymat <- as.matrix(y)

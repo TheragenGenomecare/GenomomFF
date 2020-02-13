@@ -10,48 +10,55 @@ import subprocess
 import time
 import sys
 print("Welcome To FF Analysis 1.0 Version\nTEST")
-print("Concept Developed By Sunshin Kim (sunshinkim3@gmail.com) ")
-print("Code edited by Adh Krish krishdb38@gmail.com \n")
+print("Prototype Developed By Sunshin Kim (sunshinkim3@gmail.com) ")
+print("Code updated by Adh Krish krishdb38@gmail.com \n")
 
 # To copy parameter File from test to testing Folder
-# In DNA sequencing, a read is an inferred sequence of base pairs
+# In DNA sequencing, a rc is an inferred sequence of base pairs
 # (or base pair probabilities) corresponding to all or part of a single DNA fragment
-read_bin_info = rl_bin_info = None  # User Input Read Bin File
-ffy_read = t_read = ffy_rl = t_rl = None  # Dependent and Independend Variables
-temptrain_read_y = temptrain_read_rf = temptrain_rl_y = temptrain_rl_rf = None
+rc_bin_info = None
+rl_bin_info = None  # User Input rc Bin File
+ffy_rc = None
+t_rc =None
+ffy_rl =None
+t_rl = None  # Dependent and Independend Variables
+temptrain_rc_y =None
+temptrain_rc_rf =None
+temptrain_rl_y = None
+temptrain_rl_rf = None
 # Output By GLmnet for Training Purpose
-temp_train_par_read = "temptrain_par_read.csv"
+temp_train_par_rc = "temptrain_par_rc.csv"
 
 # Output By GLmnet for Training Purpose
 temp_train_par_rl = "temptrain_par_rl.csv"
 
 
 def read_bin():
-    global rl_bin_info, read_bin_info, ffy_read, t_read, ffy_rl, t_rl
+    global rl_bin_info, rc_bin_info, ffy_rc, t_rc, ffy_rl, t_rl
     global temptrain_rl_rf, temptrain_rl_y
     global temptrain_rc_rf, temptrain_rc_y
 
     files = os.listdir("./training/RC/")
     for file in files:
-        if file[:8] == "read_bin":
-            read_bin_info = file
-            ffy_read = "ffy_read_"+file[13:]
-            t_read = "t_read_" + file[13:]
-            temptrain_read_rf = "temptrain_read_rf"+file[13:]
-            temptrain_read_y = "temptrain_read_y"+file[13:]
-            print("Read info file is \t", read_bin_info)
-    if read_bin_info == None:
-        print("Read Bininfo file Not found")
-        sys.exit(1)  # if Read bin info file not Found No need to run Further
-    # for Read Length
+        if file[:6] == "rc_bin":
+            rc_bin_info = file
+            ffy_rc = "ffy_rc_"+file[13:]
+            t_rc = "t_rc_" + file[13:]
+            temptrain_rc_rf = "temptrain_rc_rf"+file[6:]
+            temptrain_rc_y = "temptrain_rc_y"+file[6:]
+            print("rc info file is \t", rc_bin_info)
+    if rc_bin_info == None:
+        print("rc Bininfo file Not found")
+        sys.exit(1)  # if rc bin info file not Found No need to run Further
+    # for  Length
     files = os.listdir("./training/RL/")
     for file in files:
         if file[:6] == "rl_bin":
             rl_bin_info = file
-            ffy_rl = "ffy_rl_"+file[11:]
-            t_rl = "t_rl_" + file[11:]
-            temptrain_rl_rf = "temptrain_rl_rf_"+file[11:]
-            temptrain_rl_y = "temptrain_rl_y_"+file[11:]
+            ffy_rl = "ffy_rl_"+file[6:]
+            t_rl = "t_rl_" + file[6:]
+            temptrain_rl_rf = "temptrain_rl_rf_"+file[6:]
+            temptrain_rl_y = "temptrain_rl_y_"+file[6:]
             print("RL info file is \t", rl_bin_info)
     if rl_bin_info == None:  # if bin info file not Found No need to run Further
         print("RL Bininfo file Not found")
@@ -70,7 +77,7 @@ def Rl_normtrain():
     for rl_file in infolist:
         bininfo = pd.read_csv(rl_file)
         bininfo = bininfo.iloc[:, [1, 3]]
-        print(rl_file[:11], end="\t")
+        
         autosomebins = (bininfo.CHR != "chrX") & (bininfo.CHR != "chrY") & (
             bininfo.CHR != "chr13") & (bininfo.CHR != "chr18") & (bininfo.CHR != "chr21")
 
@@ -78,7 +85,7 @@ def Rl_normtrain():
         #remove = (bininfo.CHR=="chrX")|(bininfo.CHR=="chrY")|(bininfo.CHR=="chr13")|(bininfo.CHR=="chr18")|(bininfo.CHR=="chr21")
         # instead remove we used autosome bin only both are same
         bininfo["allscale"] = bininfo.RRL/sum_rrl_autosomebinsl
-        bininfo["bincounts"] = bininfo.allscale[autosomebinsonly] / \
+        bininfo["bincounts"] = bininfo.allscale[autosomebins] / \
             (bininfo.allscale.sum())*len(bininfo["allscale"])
         # Since We apply to autosome bins Only so NA value must be replaced with 0
         bininfo = bininfo.fillna(0)  # Fill NA = 0
@@ -103,49 +110,48 @@ def Enet_rl():  # receive temptrain file from arange_train()
            temptrain_rl_rf, temp_train_par_rl]
     out = subprocess.run(cmd, stdout=subprocess.PIPE,
                          stderr=subprocess.STDOUT)
-    print(out.stderr) if out.stderr else print(
-        out.stdout, "Enet R RL Run Success..")
+    print(out.stderr) if out.stderr else print("Enet R RL Run Success..")
     shutil.copy(temp_train_par_rl, "../")
     print("temptrain par rl file is copied..")
 
 
-##################### Read FILE###################################################################
+##################### rc FILE###################################################################
 
 
-def Loess_gc_train_read():
-    os.chdir("../Read/")  # While Running All Code
-    global read_bin_info, ffy_read, t_read
-    cmd = ['Rscript', 'loessgctrain.R', read_bin_info, ffy_read, t_read]
+def Loess_gc_train_rc():
+    os.chdir("../RC/")  # While Running All Code
+    global rc_bin_info, ffy_rc, t_rc
+    cmd = ['Rscript', 'loessgctrain.R', rc_bin_info, ffy_rc, t_rc]
     out = subprocess.run(cmd, shell=True, capture_output=True, text=True)
-    print(out.stderr) if out.stderr else print(out.stdout,
-                                               "Loess_GC_Trained Success")  # if out.returncode !=0
+    print(out.stderr) if out.stderr else print("Loess_GC_Trained Success")  # if out.returncode !=0
 
 
-def Arrangetrain_read():
-    global ffy_read, t_read, temptrain_read_y, temptrain_read_rf
-    df_y = pd.read_csv(ffy_read, usecols=[1])
+def Arrangetrain_rc():
+    global ffy_rc, t_rc, temptrain_rc_y, temptrain_rc_rf
+    df_y = pd.read_csv(ffy_rc, usecols=[1])
     df_y = df_y.rename(columns=df_y.iloc[0])
     df_y = df_y.iloc[1:, :]
-    df_y.to_csv(temptrain_read_y, index=None)
+    df_y.to_csv(temptrain_rc_y, index=None)
     # Variable Y
-    df_x = pd.read_csv(t_read)  # Read CSV
+    df_x = pd.read_csv(t_rc)  # rc CSV
     df_x = df_x.iloc[:, 1:]  # Remove First Col
     df_x = df_x.rename(columns=df_x.iloc[0])  # Rename the First Column
     # Since First Row is make as Col header so remove First row
     df_x = df_x.iloc[1:, :]
-    df_x.to_csv(temptrain_read_rf, index=None)  # Save the File
+    df_x.to_csv(temptrain_rc_rf, index=None)  # Save the File
+    print("Arrange train Successful")
 
 
-def Enet_read():
+def Enet_rc():
     print("Running ENET R \t", end=" ")
-    global temptrain_read_y, temptrain_read_rf, temp_train_par_read
-    cmd = ["Rscript", 'glmnet.R', temptrain_read_y,
-           temptrain_read_rf, temp_train_par_read]
+    global temptrain_rc_y, temptrain_rc_rf, temp_train_par_rc
+    cmd = ["Rscript", 'glmnet.R', temptrain_rc_y,
+           temptrain_rc_rf, temp_train_par_rc]
     out = subprocess.run(cmd, shell=True, capture_output=True, text=True)
 
     print(out.stderr) if out.stderr else print(out.stdout)
-    shutil.copy(temp_train_par_read, "../")
-    print("ENET Ran Read Successfully")
+    shutil.copy(temp_train_par_rc, "../")
+    print("ENET Ran rc Successfully")
 
 
 if __name__ == "__main__":
@@ -155,7 +161,7 @@ if __name__ == "__main__":
     Arrangetrain_rl()
     Enet_rl()
 
-    #os.chdir("./training/Read/") # Un comment this if You want to run the below Code seprately
-    Loess_gc_train_read()  # if Error raised Working Directory must be check
-    Arrangetrain_read()
-    Enet_read()
+    #os.chdir("./training/RC/") # Un comment this if You want to run the below Code seprately
+    Loess_gc_train_rc()  # if Error raised Working Directory must be check
+    Arrangetrain_rc()
+    Enet_rc()
