@@ -1,5 +1,4 @@
 # Background
-
 The accurate measure of fetal fraction is important to assure results of noninvasive prenatal testing. However, a huge amount of data as well as additional costs could occur by measuring fetal fraction. This study proposes an alternative method of measuring fetal fraction when it is a relatively limited sample size. The adaptive machine learning algorithms customised to each laboratory’s environment were used to measure fetal fraction. The pregnant women with female fetuses were tested to exclude the bias caused by training data of the women carrying male fetuses. The accuracy of fetal DNA fraction prediction was enhanced by increasing training sample size. When trained with 1,000 samples (males) and tested with 45 samples (females), the optimal bin sizes using the read count and read size features were 300 kb and 800 kb, respectively. When comparing the new 300 kb bin to the 50 kb bin used by SeqFF at 4,000–5,000 training samples, the correlation is approximately 3-5% higher in the 300 kb bin. We proposed an effective and customised method of measuring fetal fraction available to individual laboratories with limited sample collecting conditions.
  <br> `for more search our paper`
 
@@ -12,11 +11,11 @@ We did general operation with `Python` and `Statistical` operation `E-net regres
 #### If error rise running on Linux check python3 path and installed packages
 
 
-#### `There must be bin info file inside RC and RL file ` as like rc_bin*... .csv and rl_bininfo*...csv both in CSV without header 
+#### `There must be bin info file inside RC and RL file ` as like rc_bin*...  and rl_bininfo*... both  without header 
 Sample1.Fastq.sam.bam.sort.bam.rmdup.bam.sam.rl,19.05270566
 Sample2.Fastq.sam.bam.sort.bam.rmdup.bam.sam.rl,17.65618359
 
-## GC CSV and Read Length SRL file must be CSV format and CSV header as like <br>
+## Read Count (RC) and Read Length (RL) file must be in .rc and .rl format and header as like <br>
 
 "BIN","CHR","END","COUNT","GC" <br>
 chr1_0,chr1,300000,583,0.430783082518<br>
@@ -29,11 +28,11 @@ chr1_1,chr1,1600000,0.262870514821 <br>
 # Training the Model
 ### Step 1:
 keep all sam File inside sam Folder `TheragenGenomecare/sam/`
-Run python code `python bam_rl_read.py` Converting sam file to Read GC (csv) and SRL  Format take long time
-``` So Focus mainly after this step ```
+Run python code `python bam_rl_read.py` Converting sam file to Read Count rc and  Read Length rl Format. This may take long time according to input size
+``` We Focus mainly after this step ```
 
 ### Step 2:
-Check for Precautions and Requirements
+Check for Precautions and Requirements . If any Error rises regarding packages then install the required packages
 
 ### Step 3 : Run Training Code 
 `python GenomomFF_training.py` in same location where GenomomFF_training.py
@@ -43,9 +42,12 @@ when training run successfully check parameter csv file inside training Folder
 
 # `Testing the Data`
 ### Step 4: Check the bininfo files, format and location inside testing Folder
-#####  Run testing Code `python GenomomFF_testing.py`
+#####  Run testing Code `python GenomomFF_testing.py` 
 
 `` You can See Correlation output and also Correlation csv file saved inside testing folder with correlation value at last ``
 ` All kinds of suggestions and comments are heartly welcome here ` 
+
+#### This program run both on Linux and Windows and we Recommend Windows , Python 3.7 and R 3.6 
+### Any Kinds of Questions ,  Bugs , Suggestions or Eroor are heartly welcome. Thank You
 #### Sunshin Kim (sunshinkim3@gmail.com)
 #### Adh Krish (krishdb38@gmail.com)
