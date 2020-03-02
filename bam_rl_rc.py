@@ -9,19 +9,19 @@ for file in ls:
 print("Total sam Files= ",len(sam_files))
 
 #Define a function to convert sam_file to sam_rgc.csv Format
-def sam_2_rgc():
+def sam_2_rc():
     count = 1
     #sam_file_name ,  Bin_ =300000, fkbin_ = 50000
     global sam_files
     Bin =300000
     fkbin = 50000
-    print("converting Sam file to RGC")
+    print("converting Sam file to RC")
      # List of sam Files
     
     for sam_file_name in sam_files:
         list_input = open("./samfile/"+sam_file_name,'r') #Read SAM File
         list_text = list_input.readlines()  #Read Line by Line and store in list format values
-        output = open("./samfile/"+sam_file_name+'_rgc.csv', 'w')  #Save file
+        output = open("./samfile/"+sam_file_name+'.rc', 'w')  #Save file
         rd = a1 = c1 = g1 = t1 =0
         #Bin = Bin_ #30K
         #fkbin = fkbin_ #gap in read
@@ -127,13 +127,13 @@ def sam_2_rgc():
         output.close()
         count +=1
     #print("Sam to SRG Completed=",count)
-    print("All sam File Converted to RGC")
+    print("All sam File Converted to RC")
 
 
-def sam_to_srl():
+def sam_to_rl():
     #sam_file_name,output_folder = "./test/SRL800K/" , Bin = 800000,fkbin = 50000
     global sam_files
-    print("Converting SAM to SRL")
+    print("Converting SAM to RL")
     count =1
     #var1 = sam_file_name
     #out = sam_file_name[9:] #sam_file/ == 8 Character
@@ -144,7 +144,7 @@ def sam_to_srl():
     for sam in sam_files:
         list_input = open("./samfile/"+sam,'r')
         list_text = list_input.readlines()
-        output = open("./samfile/"+sam+'.srl', 'w')
+        output = open("./samfile/"+sam+'.rl', 'w')
         rd = srd = 0
     
 
@@ -223,5 +223,5 @@ def sam_to_srl():
         output.close()
 
 if __name__ == "__main__":
-    sam_2_rgc()
-    #sam_to_srl()
+    sam_2_rc()
+    sam_to_rl()
