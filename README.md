@@ -45,9 +45,7 @@ when training run successfully check parameter csv file inside training Folder
 #####  Run testing Code `python GenomomFF_testing.py` 
 
 `` You can See Correlation output and also Correlation csv file saved inside testing folder with correlation value at last ``
-` All kinds of suggestions and comments are heartly welcome here ` 
-
 #### This program run both on Linux and Windows and we Recommend Windows , Python 3.7 and R 3.6 
-### Any Kinds of Questions ,  Bugs , Suggestions or Eroor are heartly welcome. Thank You
+### `Any Kinds of Questions ,  Bugs , Suggestions or Eroor are heartly welcome. Thank You`
 #### Sunshin Kim (sunshinkim3@gmail.com)
 #### Adh Krish (krishdb38@gmail.com)
