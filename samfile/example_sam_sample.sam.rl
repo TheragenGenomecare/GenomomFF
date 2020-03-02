@@ -1,4 +1,4 @@
-"binName","CHR","end","rrl"
+"BIN","CHR","END","RRL"
 chr1_0,chr1,800000,0.46
 chr1_1,chr1,1600000,0
 chr1_2,chr1,2400000,0

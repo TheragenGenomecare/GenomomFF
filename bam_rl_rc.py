@@ -86,7 +86,7 @@ def sam_2_rc():
             except:
                 pass 
 
-        output.write('"binName"'+','+'"CHR"'+','+'"end"'+','+'"counts"'+','+'"nGC"'+'\n')
+        output.write('"BIN"'+','+'"CHR"'+','+'END'+','+'"COUNT"'+','+'"GC"'+'\n')
         for x in range(1, 23):
             for y in range(int(mx[x-1])+1):
                 key = "chr"+str(x)+'_'+str(y)
@@ -191,7 +191,7 @@ def sam_to_rl():
             except:
                 pass 
 
-        output.write('"binName"'+','+'"CHR"'+','+'"end"'+','+'"rrl"'+'\n')
+        output.write('"BIN"'+','+'"CHR"'+','+'"END"'+','+'"RRL"'+'\n')
         for x in range(1, 23):
             for y in range(int(mx[x-1])+1):
                 key = "chr"+str(x)+'_'+str(y)
