@@ -1,4 +1,4 @@
-#!usr/bin/python3
+#!/usr/bin/python3
 #Author:Sunshin Kim (sunshinkim3@gmail.com)
 # Krishna(krishdb38@gmail.com)
 

@@ -1,6 +1,6 @@
-#!usr/bin/python3
-import sys,os
+#!/usr/bin/python3
 
+import sys,os
 sam_files =[]
 ls =  os.listdir("./samfile/") #keep ALl Sam Files here
 for file in ls:

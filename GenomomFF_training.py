@@ -1,4 +1,4 @@
-#!usr/bin/python3
+#!/usr/bin/python3
 # Author:Sunshin Kim (sunshinkim3@gmail.com)
 # Krishna(krishdb38@gmail.com)
 
@@ -109,8 +109,7 @@ def Enet_rl():  # receive temptrain file from arange_train()
     global temptrain_rl_y, temptrain_rl_rf, temp_train_par_rl
     cmd = ['Rscript', 'glmnet.R', temptrain_rl_y,
            temptrain_rl_rf, temp_train_par_rl]
-    out = subprocess.run(cmd, stdout=subprocess.PIPE,
-                         stderr=subprocess.STDOUT)
+    out = subprocess.run(cmd,shell = True,capture_output = True,text = True)
     print(out.stderr) if out.stderr else print("Enet R RL Run Success..")
     shutil.copy(temp_train_par_rl, "../")
     print("temptrain par rl file is copied..")
