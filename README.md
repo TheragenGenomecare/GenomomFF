@@ -9,6 +9,7 @@ Python is great language and numpy and pandas are very fast and widely used in d
 Similarly R is easy and powerful languages for statistical operation.
 We did general operation with `Python` and `Statistical` operation `E-net regression` with `R --> glmnet`
 #### If any package not installed say then installed it manually
+#### If error rise running on Linux check python3 path and installed packages
 
 
 #### `There must be bin info file inside RC and RL file ` as like rc_bin*... .csv and rl_bininfo*...csv both in CSV without header 
