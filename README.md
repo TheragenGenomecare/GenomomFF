@@ -44,7 +44,7 @@ when training run successfully check parameter csv file inside training Folder
 ### Step 4: Check the bininfo files, format and location inside testing Folder
 #####  Run testing Code `python GenomomFF_testing.py`
 
-`` You can See Correlation output and also Correlation csv file saved inside training folder with correlation value at last ``
+`` You can See Correlation output and also Correlation csv file saved inside testing folder with correlation value at last ``
 ` All kinds of suggestions and comments are heartly welcome here ` 
 #### Sunshin Kim (sunshinkim3@gmail.com)
 #### Adh Krish (krishdb38@gmail.com)
