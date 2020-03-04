@@ -23,6 +23,10 @@ chr1_1,chr1,1600000,0.262870514821 <br>
  - Pandas 
  - numpy
  - scikit
+   ```bash
+   Method to insall python library **pip install <library name>** e.g. 
+pip install pandas
+```
  
 ### " R "
   - doParallel
@@ -30,35 +34,35 @@ chr1_1,chr1,1600000,0.262870514821 <br>
   - Matrix
   - MASS
   - methods
+  
   ```bash
 install.packages(c('Matrix', 'glmnet', 'MASS', 'foreach', 'doParallel', 'MASS'))
 ```
-  
-##### `not installed Python library can be installed by pip install <name> `
-##### `not installed R Packages can be installed by install.packages("name")`
 
 #### If any error rise check Files specified Format , installed Packages and Path for Python and R in your System
 
 
 
-# Training the Model
-### Step 1:
+# Preparing data for Training & Testing
+### Check File Format , Location , bin info file name and header (Column Name) 
 keep all sam File inside sam Folder `TheragenGenomecare/sam/`
 Run python code `python bam_rl_read.py` Converting sam file to Read Count rc and  Read Length rl Format. This may take long time according to input size
-``` We Focus mainly after this step ```
 
-### Step 2:
-Check for Precautions and Requirements . If any Error rises regarding packages then install the required packages
+### After gc and rl file ready keep all gc and rl files in training and testing Folders with corresponding bininfo files
 
-### Step 3 : Run Training Code 
-`python GenomomFF_training.py` in same location where GenomomFF_training.py
+## ``` Training the Model ```
+`bash
+python GenomomFF_training.py`  in same location where GenomomFF_training.py
+
 ###### This may take few minute according to your data size <br>
 For 1000 sets of data it took around 4 minute in our system 
-when training run success fully check parameter csv file inside training Folder
+After running GenomomFF_training successfully , this will create a rc and rl parameter  file inside training Folder which is used for testing the model
 
-# `Testing the Data`
-### Step 4: Check the bininfo files, format and location inside testing Folder
-#####  Run testing Code `python GenomomFF_testing.py` 
+## `Testing the Data`
+### Check the bininfo files, format and location inside testing Folder
+#####  Run testing Code 
+```python
+python GenomomFF_testing.py``` 
 
 `` You can See Correlation output and also Correlation csv file saved inside testing folder with correlation value at last ``
 #### This program run both on Linux and Windows and we Recommend Windows , Python 3.7 and R 3.6 
