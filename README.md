@@ -39,9 +39,9 @@ chr1_1,chr1,1600000,0.262870514821 <br>
 
 # Preparing data for Training & Testing
 ### Check File Format , Location , bin info file name and header (Column Name) 
-keep all sam File inside sam Folder `TheragenGenomecare/sam/`
-Run python code `python bam_rl_read.py` Converting sam file to Read Count rc and  Read Length rl Format. This may take long time according to input size
-
+Keep all sam File inside sam Folder `TheragenGenomecare/sam/` <br>
+Run python code `python bam_rl_read.py` <br> 
+Converting sam file to Read Count rc and  Read Length rl Format. This may take long time according to input size
 ### After rc and rl file ready keep all rc and rl files in training and testing Folders with corresponding bininfo files
 
 ## ``` Training the Model ```
@@ -58,6 +58,6 @@ After running GenomomFF_training successfully , this will create a rc and rl par
 
 `` You can See Correlation output and also Correlation csv file saved inside testing folder with correlation value at last ``
 #### This program run both on Linux and Windows and we Recommend Windows , Python 3.7 and R 3.6 
-### `Any Kinds of Questions ,  Bugs , Suggestions or Eroor are heartly welcome. Thank You`
+### `Any Kinds of Questions ,  Bugs , Suggestions or Error are heartly welcome. Thank You`
 #### Sunshin Kim (sunshinkim3@gmail.com)
 #### Adh Krish (krishdb38@gmail.com)
