@@ -3,13 +3,13 @@ The accurate measure of fetal fraction is important to assure the results of non
 
  <br> `for more search our paper`
 # `User Manual`
-## Required Files & Folders
-##### `The bin info file inside RC and RL file ` are like rc_bin*...  and rl_bininfo*... both  without header
+## Required Files in the Folders
+##### `The bin info file inside RC and RL files ` are like rc_bin*...  and rl_bininfo*... both  without header.
 
 Sample1.Fastq.sam.bam.sort.bam.rmdup.bam.sam.rl,19.05270566
 Sample2.Fastq.sam.bam.sort.bam.rmdup.bam.sam.rl,17.65618359
 
-##### Read Count (RC) and Read Length (RL) file must be in .rc and .rl format and header as like <br>
+##### Read Count (RC) and Read Length (RL) files must be in .rc and .rl format and header as the following. <br>
 "BIN","CHR","END","COUNT","GC" <br>
 chr1_0,chr1,300000,583,0.430783082518<br>
 chr1_1,chr1,600000,474,0.444418530072<br>
@@ -35,28 +35,28 @@ chr1_1,chr1,1600000,0.262870514821 <br>
   
   ```install.packages(c('Matrix', 'glmnet', 'MASS', 'foreach', 'doParallel', 'MASS'))```
 
-#### If any error rise check Files specified Format , installed Packages and Path for Python and R in your System
+#### If any error rises, please check the specified format of files and the installed Packages and the Path for Python and R in your System.
 
 # Preparing data for Training & Testing
-### Check File Format , Location , bin info file name and header (Column Name) 
+### Check file formats , locations , bin info file names, and headers. (Column Name) 
 Keep all sam File inside sam Folder `TheragenGenomecare/sam/` <br>
 Run python code `python bam_rl_read.py` <br> 
 Converting sam file to Read Count rc and  Read Length rl Format. This may take long time according to input size
-### After rc and rl file ready keep all rc and rl files in training and testing Folders with corresponding bininfo files
+### After the rc and rl files are ready, please keep all rc and rl files in training and testing Folders with corresponding bininfo files.
 
 ## ``` Training the Model ```
 `python GenomomFF_training.py`  on terminal where GenomomFF_training.py is located
 
-###### This may take few minute according to your data size <br>
-For 1000 sets of data it took around 4 minute in our system 
-After running GenomomFF_training successfully , this will create a rc and rl parameter  file inside training Folder which is used for testing the model
+###### This may take few minute according to your data size. <br>
+For 1000 sets of data, it took around 4 minute in our system. 
+After running GenomomFF_training successfully, this will create the rc and rl parameter files inside training Folder, which are used for testing the data.
 
 ## `Testing the Data`
-### Check the bininfo files, format and location inside testing Folder
+### Pleae check the bininfo files, formats, and locations inside testing Folder.
 #####  Run testing Code 
 ```python GenomomFF_testing.py``` 
 
-`` You can See Correlation output and also Correlation csv file saved inside testing folder with correlation value at last ``
+`` You can See a correlation csv file saved inside testing folder with correlation value at last. ``
 #### This program run both on Linux and Windows and we Recommend Windows , Python 3.7 and R 3.6 
 ### `Any Kinds of Questions ,  Bugs , Suggestions or Error are heartly welcome. Thank You`
 #### Sunshin Kim (sunshinkim3@gmail.com)
