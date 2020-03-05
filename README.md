@@ -37,8 +37,6 @@ chr1_1,chr1,1600000,0.262870514821 <br>
 
 #### If any error rise check Files specified Format , installed Packages and Path for Python and R in your System
 
-
-
 # Preparing data for Training & Testing
 ### Check File Format , Location , bin info file name and header (Column Name) 
 keep all sam File inside sam Folder `TheragenGenomecare/sam/`
@@ -47,8 +45,7 @@ Run python code `python bam_rl_read.py` Converting sam file to Read Count rc and
 ### After rc and rl file ready keep all rc and rl files in training and testing Folders with corresponding bininfo files
 
 ## ``` Training the Model ```
-`bash
-python GenomomFF_training.py`  in same location where GenomomFF_training.py
+`python GenomomFF_training.py`  on terminal where GenomomFF_training.py is located
 
 ###### This may take few minute according to your data size <br>
 For 1000 sets of data it took around 4 minute in our system 
