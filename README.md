@@ -4,7 +4,7 @@ The accurate measure of fetal fraction is important to assure the results of non
  <br> `for more search our paper`
 # `User Manual`
 ## Required Files in the Folders
-##### `The bin info file inside RC and RL files ` are like rc_bin*...  and rl_bininfo*... both  without header.
+##### `The bin info file inside RC and RL files ` are like rc_bin*...  and rl_bininfo*... both without header.
 
 Sample1.Fastq.sam.bam.sort.bam.rmdup.bam.sam.rl,19.05270566
 Sample2.Fastq.sam.bam.sort.bam.rmdup.bam.sam.rl,17.65618359
@@ -24,7 +24,7 @@ chr1_1,chr1,1600000,0.262870514821 <br>
  - numpy
  - scikit
    
-   ```Method to insall python library pip install <library name> e.g. pip install pandas ```
+   ```Method to insall python library pip install <library name> e.g. pip install pandas. ```
  
 ### " R "
   - doParallel
@@ -39,7 +39,7 @@ chr1_1,chr1,1600000,0.262870514821 <br>
 
 # Preparing data for Training & Testing
 ### Check file formats, locations, bin info file names, and headers. (Column Name) 
-Keep all sam files inside the sam Folder. `TheragenGenomecare/sam/` <br>
+Keep all sam files inside the sam folder like e.g. `TheragenGenomecare/sam/`. <br>
 Run python code `python bam_rl_read.py`. <br> 
 Convert sam files to Read Count (rc) and Read Length (rl) format files. This may take long time according to the input data size.
 ### After the rc and rl files are ready, please keep all rc and rl files in training and testing Folders with corresponding bininfo files.
