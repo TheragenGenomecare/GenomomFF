@@ -39,17 +39,17 @@ chr1_1,chr1,1600000,0.262870514821 <br>
 
 # Preparing data for Training & Testing
 ### Check file formats, locations, bin info file names, and headers. (Column Name) 
-Keep all sam File inside sam Folder `TheragenGenomecare/sam/` <br>
-Run python code `python bam_rl_read.py` <br> 
-Converting sam file to Read Count rc and  Read Length rl Format. This may take long time according to input size
+Keep all sam files inside the sam Folder. `TheragenGenomecare/sam/` <br>
+Run python code `python bam_rl_read.py`. <br> 
+Convert sam files to Read Count (rc) and Read Length (rl) format files. This may take long time according to the input data size.
 ### After the rc and rl files are ready, please keep all rc and rl files in training and testing Folders with corresponding bininfo files.
 
 ## ``` Training the Model ```
-`python GenomomFF_training.py`  on terminal where GenomomFF_training.py is located
+`python GenomomFF_training.py` on terminal where GenomomFF_training.py is located.
 
 ###### This may take few minute according to your data size. <br>
 For 1000 sets of data, it took around 4 minute in our system. 
-After running GenomomFF_training successfully, this will create the rc and rl parameter files inside training Folder, which are used for testing the data.
+After running GenomomFF_training successfully, this will create the rc and rl parameter files inside the training folder, which are used for testing the data.
 
 ## `Testing the Data`
 ### Pleae check the bininfo files, formats, and locations inside testing Folder.
@@ -58,6 +58,6 @@ After running GenomomFF_training successfully, this will create the rc and rl pa
 
 `` You can See a correlation csv file saved inside testing folder with correlation value at last. ``
 #### This program run both on Linux and Windows and we Recommend Windows with Python 3.7 and R 3.6. 
-### `Any Kinds of Questions ,  Bugs , Suggestions or Error are heartly welcome. Thank You`
+### `Any Kinds of Questions, Bugs, Suggestions or Errors are heartly welcome. Thank You`
 #### Sunshin Kim (sunshinkim3@gmail.com)
 #### Adh Krish (krishdb38@gmail.com)
