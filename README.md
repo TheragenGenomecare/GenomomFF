@@ -9,7 +9,7 @@ The accurate measure of fetal fraction is important to assure the results of non
 Sample1.Fastq.sam.bam.sort.bam.rmdup.bam.sam.rl,19.05270566
 Sample2.Fastq.sam.bam.sort.bam.rmdup.bam.sam.rl,17.65618359
 
-##### Read Count (RC) and Read Length (RL) files must be in .rc and .rl format and header as the following. <br>
+##### Read Count (RC) and Read Length (RL) files must be in .rc and .rl formats with headers as the following. <br>
 "BIN","CHR","END","COUNT","GC" <br>
 chr1_0,chr1,300000,583,0.430783082518<br>
 chr1_1,chr1,600000,474,0.444418530072<br>
