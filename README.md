@@ -4,7 +4,7 @@ The accurate measure of fetal fraction is important to assure the results of non
  <br> `for more search our paper`
 # `User Manual`
 ## Required Files in the Folders
-##### `The bin info file inside RC and RL files ` are like rc_bin*...  and rl_bininfo*... both without header.
+##### `The bin info files in RC and RL folders` are like both rc_bin*...  and rl_bininfo*... without headers.
 
 Sample1.Fastq.sam.bam.sort.bam.rmdup.bam.sam.rl,19.05270566
 Sample2.Fastq.sam.bam.sort.bam.rmdup.bam.sam.rl,17.65618359
