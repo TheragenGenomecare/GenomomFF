@@ -35,14 +35,14 @@ chr1_1,chr1,1600000,0.262870514821 <br>
   
   ```install.packages(c('Matrix', 'glmnet', 'MASS', 'foreach', 'doParallel', 'MASS'))```
 
-#### If any error rises, please check the specified format of files, the installed Packages, and the Path for Python and R in your System.
+#### If any error rises, please check the specified format of files, the installed packages, and the path for Python and R in your system.
 
 # Preparing data for Training & Testing
 ### Please check the file formats, locations, bin info file names, and headers.
 Keep all sam files inside the sam folder like e.g. `TheragenGenomecare/sam/`. <br>
 Run python code `python bam_rl_read.py`. <br> 
 Convert sam files to Read Count (rc) and Read Length (rl) format files. This may take long time according to the input data size.
-### After the rc and rl files are ready, please keep all rc and rl files in training and testing Folders with corresponding bininfo files.
+### After the rc and rl files are ready, please keep all rc and rl files in the training and testing folders with corresponding bininfo files.
 
 ## ``` Training the Model ```
 `python GenomomFF_training.py` on terminal where GenomomFF_training.py is located.
@@ -57,7 +57,7 @@ After running GenomomFF_training successfully, this will create the rc and rl pa
 ```python GenomomFF_testing.py``` 
 
 `` You can see the csv file with correlation values saved inside the testing folder at last. ``
-#### This program run both on Linux and Windows and we Recommend Windows with Python 3.7 and R 3.6. 
-### `Any Kinds of Questions, Bugs, Suggestions or Errors are heartly welcome. Thank You`
+#### This program run both on Linux and Windows and we recommend Windows with Python 3.7 and R 3.6. 
+### `Any kinds of questions, bugs, suggestions or errors are heartly welcome. Thank You`
 #### Sunshin Kim (sunshinkim3@gmail.com)
 #### Adh Krish (krishdb38@gmail.com)
