@@ -38,7 +38,7 @@ chr1_1,chr1,1600000,0.262870514821 <br>
 #### If any error rises, please check the specified format of files, the installed Packages, and the Path for Python and R in your System.
 
 # Preparing data for Training & Testing
-### Check file formats, locations, bin info file names, and headers. (Column Name) 
+### Please check the file formats, locations, bin info file names, and headers.
 Keep all sam files inside the sam folder like e.g. `TheragenGenomecare/sam/`. <br>
 Run python code `python bam_rl_read.py`. <br> 
 Convert sam files to Read Count (rc) and Read Length (rl) format files. This may take long time according to the input data size.
@@ -52,7 +52,7 @@ For 1000 sets of data, it took around 4 minute in our system.
 After running GenomomFF_training successfully, this will create the rc and rl parameter files inside the training folder, which are used for testing the data.
 
 ## `Testing the Data`
-### Pleae check the bininfo files, formats, and locations inside testing Folder.
+### Pleae check the bininfo files, file formats, and locations inside the testing folder.
 #####  Run testing Code 
 ```python GenomomFF_testing.py``` 
 
