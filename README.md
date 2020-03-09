@@ -19,7 +19,7 @@ chr1_0,chr1,800000,0.255024255024<br>
 chr1_1,chr1,1600000,0.262870514821 <br>
 
 ### Require dependency
-### `Python greater than 3`
+### `Python 3`
  - Pandas 
  - numpy
  - scikit
