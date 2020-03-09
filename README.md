@@ -52,7 +52,7 @@ For 1000 sets of data, it took around 4 minute in our system.
 After running GenomomFF_training successfully, this will create the rc and rl parameter files inside the training folder, which are used for testing the data.
 
 ## `Testing the Data`
-### Pleae check the bininfo files, file formats, and locations inside the testing folder.
+### Please check the bininfo files, file formats, and locations inside the testing folder.
 #####  Run testing Code 
 ```python GenomomFF_testing.py``` 
 
