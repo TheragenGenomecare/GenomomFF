@@ -26,7 +26,7 @@ chr1_1,chr1,1600000,0.262870514821 <br>
    
    ```Method to insall python library pip install <library name> e.g. pip install pandas. ```
  
-### " R "
+### `R`
   - doParallel
   - glmnet
   - Matrix
@@ -56,7 +56,7 @@ After running GenomomFF_training successfully, this will create the rc and rl pa
 #####  Run testing Code 
 ```python GenomomFF_testing.py``` 
 
-`` You can See a correlation csv file saved inside testing folder with correlation value at last. ``
+`` You can see the csv file with correlation values saved inside the testing folder at last. ``
 #### This program run both on Linux and Windows and we Recommend Windows with Python 3.7 and R 3.6. 
 ### `Any Kinds of Questions, Bugs, Suggestions or Errors are heartly welcome. Thank You`
 #### Sunshin Kim (sunshinkim3@gmail.com)
