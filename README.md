@@ -57,7 +57,7 @@ After running GenomomFF_training successfully, this will create the rc and rl pa
 ```python GenomomFF_testing.py``` 
 
 `` You can see the csv file with correlation values saved inside the testing folder at last. ``
-#### This program run both on Linux and Windows and we recommend Windows with Python 3.7 and R 3.6. 
+#### This program runs both on Linux and Windows and we recommend Windows with Python 3.7 and R 3.6. 
 ### `Any questions, bugs, suggestions or errors are heartly welcome.`
 #### Sunshin Kim (sunshinkim3@gmail.com)
 #### Adh Krish (krishdb38@gmail.com)
