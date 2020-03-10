@@ -47,8 +47,8 @@ Convert sam files to Read Count (rc) and Read Length (rl) format files. This may
 ## ``` Training the Model ```
 `python GenomomFF_training.py` in the terminal where GenomomFF_training.py is located.
 
-###### This may take few minute according to your data size. <br>
-For 1000 sets of data, it took around 4 minute in our system. 
+###### This may take a few minutes according to your data size. <br>
+For 1000 sets of data, it took around 4 minutes in our system. 
 After running GenomomFF_training successfully, this will create the rc and rl parameter files inside the training folder, which are used for testing the data.
 
 ## `Testing the Data`
